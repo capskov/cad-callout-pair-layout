@@ -1,0 +1,6 @@
+interface:
+  display_name: "CAD Callout Pair Layout"
+  short_description: "Style ordinary CAD callouts with bounded pairwise placement"
+  default_prompt: "Use $cad-callout-pair-layout to inspect the target and approved style, plan bounded placement, and verify native CAD results."
+policy:
+  allow_implicit_invocation: true

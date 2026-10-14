@@ -1,0 +1,52 @@
+{
+  "bounds": [
+    -40,
+    -40,
+    40,
+    40
+  ],
+  "clearance": 0.15,
+  "step": 5,
+  "max_extensions": 5,
+  "max_rounds": 3,
+  "rows": [
+    {
+      "id": "ExampleA",
+      "text": "Synthetic label",
+      "anchor": [
+        0,
+        0
+      ],
+      "direction": [
+        0.6,
+        -0.8
+      ],
+      "length": 10,
+      "width": 4,
+      "height": 1.5,
+      "gap": 0.375,
+      "opening_sign": 1,
+      "target": {
+        "kind": "polygon",
+        "points": [
+          [
+            -20,
+            -20
+          ],
+          [
+            20,
+            -20
+          ],
+          [
+            20,
+            20
+          ],
+          [
+            -20,
+            20
+          ]
+        ]
+      }
+    }
+  ]
+}
