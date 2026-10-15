@@ -1,6 +1,6 @@
 # Compatibility / 兼容范围
 
-Skill preview v0.3.0-rc.1 preserves private rules v0.3. Solver checked on Windows/Python3.13.14/Shapely2.1.2; pinned dependency requires Python3.10+. Other Python/OS combinations are not independently tested here. Native workflow host/patch/client support must be established by actual tools, not this package name.
+Current source preview v0.6 adds Agent planning and the read-only reviewer; the legacy pairwise solver remains unchanged from v0.3. Solver checked on Windows/Python3.13.14/Shapely2.1.2; pinned dependency requires Python3.10+. Other Python/OS combinations are not independently tested here. Native workflow host/patch/client support must be established by actual tools, not this package name.
 
 | Needed capability / 所需能力 | Foundation v1.0.0-rc.1 | Boundary / 边界 |
 | --- | --- | --- |
@@ -18,3 +18,5 @@ No blanket Foundation>=1.0 full-workflow guarantee. Components develop/release i
 没有“底座≥1.0就完整兼容”的承诺。组件独立开发发布；通用原生操作／执行治理归底座，样式／排布归Skill。外部工具不自动共享账本、事务或栅栏。
 
 Optional manual BZYD editions: Chinese has historical AutoCAD2026 native evidence; English UI only has static expression/encoding equivalence; AutoCAD2022 is unverified for both. It does not depend on the 2026 Foundation bridge. See [manual guide](../tools/autolisp/README.md) and [component/version discussion](STRUCTURE-AND-VERSIONS.md).
+
+Current field evidence / 当前实战：AutoCAD2026两处35组经支持关联偏移的底座版本完成标注、读回与保存；原生人工编辑恢复通过。只展示第二处成果，见[案例](../references/nanyi-field-example.md)。运行时核对schema，不因同名旧后端推定兼容。PDF经用户授权COM打印，非底座打印能力。

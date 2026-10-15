@@ -1,6 +1,6 @@
 # Notices
 
-Copyright 2026 capskov. Owned Skill instructions/scripts: Apache-2.0. The solver is unchanged from private rules v0.3; public instructions/links are portable and historical progress reconciled. Real fixtures/two actual-data regressions and legacy native-access helpers are omitted. No CAD binaries, fonts or engineering drawings are redistributed.
+Copyright 2026 capskov. Owned Skill instructions/scripts: Apache-2.0. The solver is unchanged from private rules v0.3; public instructions/links are portable and historical progress reconciled. Real fixtures/two actual-data regressions and legacy native-access helpers are omitted. No CAD binaries, fonts or source engineering DWGs are redistributed. The selected final second-area PDF and its crop are published as display evidence with explicit user authorization.
 
 Shapely is an external dependency, not vendored; BSD-3-Clause terms: https://github.com/shapely/shapely/blob/main/LICENSE.txt . User-installed dependencies retain their own terms, including native geometry components from their suppliers. No Shapely/GEOS binary is shipped in this ZIP.
 

@@ -1,5 +1,6 @@
 # 排布规则 v0.2
 
+Legacy v0.3 local-repair mode only / 仅用于旧版局部修补模式。Default v0.6 Agent planning follows [Agent planning](agent-planning.md); these fixed-angle/extension limits do not apply globally.
 ## 坐标、样式和道路侧
 
 在认可图框坐标中讨论水平和左右：x沿水平边，y沿垂直边。模型测试使用明确的frame(origin,angle)和bounds；无需读取或切换布局。俯视纸空间需要时才读取视口中心和-TwistAngle。

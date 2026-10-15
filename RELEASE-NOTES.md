@@ -1,3 +1,9 @@
+# v0.6.0-rc.1 source preview
+
+Agent-first frame/region/order planning; low-priority gray residual background; read-only explicit geometry reviewer; native association/tail and manual edit guidance. Includes the accepted two-area 35-callout trial, the second-area PDF crop and its pm.ctb native PDF. Two hatch-edge issues found in PDF were corrected before publication. The legacy solver and optional manual Lisp are unchanged. No automatic scale conversion or Foundation-only plotting claim.
+
+This update is available on the repository main branch. Existing v0.3 release ZIP assets remain historical and are not silently replaced.
+
 # v0.3.0-rc.1 — AutoCAD callout Skill public preview
 
 Preserves v0.3 MCP-first rules and the byte-identical pair_layout.py solver. Includes bilingual Skill instructions, installation/compatibility guidance, 19 generic regressions and a synthetic CLI example. Adds the optional BZYD manual callout-move utility: unchanged Chinese source and English prompt localization, both CP936/GBK without BOM. Owned material is Apache-2.0.

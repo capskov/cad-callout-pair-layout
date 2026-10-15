@@ -1,5 +1,6 @@
 # Placement rules
 
+Legacy v0.3 local-repair mode only / 仅用于旧版局部修补模式。Default v0.6 Agent planning follows [Agent planning](agent-planning.md); these fixed-angle/extension limits do not apply globally.
 [完整中文规则](placement-rules.zh-CN.md). Preserve the existing algorithm, not a new design.
 
 Use approved frame-local x/y; world Y is not road side. A is anchor, B bend, C tail; opening_sign +1/-1 determines horizontal direction. A→B x shares that sign; the angle at B is strictly 90°–180°. Actual formatted MTEXT width/height, attachment 9 and bottom-right insertion apply to both openings.

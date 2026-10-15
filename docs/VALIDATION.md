@@ -1,8 +1,14 @@
+# Current v0.6 evidence / 当前v0.6验证
+
+See the [accepted two-area 35-callout trial](../references/nanyi-field-example.md): new Agent planning, native MCP annotation/readback/save, native editing smoke test, actual pm.ctb PDF inspection and two local corrections. The PDF and crops are published with user authorization. Ordinary queried base geometry remained unchanged; one regenerated proxy display extent remains a limitation. Printing used explicitly authorized COM, not an enabled Foundation printing tool. This does not certify every drawing, CAD version, background object or automatic scale conversion.
+
+The public package's current generic tests and structure/link checks are rerun during this update; private measured fixtures remain excluded. Historical v0.3 evidence follows.
+
 # Evidence and limits / 验证与限制
 
 ## Public package (existing candidate evidence reused)
 
-The algorithm is byte-identical to the existing private v0.3 solver. Generic exported regressions are retained; the real 31-row fixture and two actual-project/measurement tests are excluded, not replaced and relabeled as synthetic proof. Current packaging checks cover these generic tests, the synthetic CLI example, archive extraction, naming/metadata and links. No new CAD instance, full native acceptance or case annotation rerun is performed.
+The algorithm is byte-identical to the existing private v0.3 solver. Generic exported regressions are retained; the real 31-row fixture and two actual-project/measurement tests are excluded, not replaced and relabeled as synthetic proof. Current packaging checks cover these generic tests, the synthetic CLI example, archive extraction, naming/metadata and links. That v0.3 packaging pass performed no new CAD rerun. The separate v0.6 trial below adds current-case native evidence.
 
 原算法逐字节保留。仅导出通用回归，真实31行夹具与两个实际工程／测量测试不导出，不冒称以合成数据重新验收。当前包装检查不构成新增CAD实机证明。
 

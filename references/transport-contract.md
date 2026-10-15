@@ -1,11 +1,49 @@
-# CAD transport and capability contract
+# MCP 传输与能力契约
 
-Rules/placement belong to this Skill; reusable native operations, identity/state/readback belong to backend/Foundation. [Coverage](../docs/COMPATIBILITY.md).
+## 目的与边界
 
-Discover actual tools/schema. Tool visibility is not compatibility or native acceptance. Uniquely verify intended drawing path, process/session and backend. Unknown identity prevents writing. Inspect ordinary LEADER/MTEXT type, vertices/association, effective style, actual text dimensions and yellow-dot rendering. MLeader is not a substitute.
+本参考只规定如何发现和使用当前CAD底座能力；标注内容、样式、道路侧与全局布局由本技能及[Agent规划](agent-planning.md)决定，旧修补器预算仅按[局部规则](placement-rules.md)执行。底座提供会话/文档定位、原生查询/创建/修改/保存/读回等通用操作。不要把provider接口名、schema或未验证能力写成工程规则，也不重做底座已有通用能力。
 
-After uncertain submission query the original request and recorded effects/verification/fences. Entity readback alone does not authorize replay, unlocking or provider switching. Keep stable request IDs. Independent readback and saved-file verification are distinct from the transport response; failed verification does not imply rollback.
+## 内框及代理图形读取
 
-A real interface gap may use a fixed reviewed project/backend adapter only when task authorization covers it. Consume confirmed PID/fullpath, limit operations/types/handles, check old state and independently read back. Do not put arbitrary execution code in this Skill, bypass refusals/security/fences, or automatically fall back to COM/Lisp.
+绑定后首先检查现有实体查询/属性读取是否支持内框候选（含代理/图块）的原生extents。逐项区分“查询可见此类型”“范围读取有效”“Agent确认此范围对应本幅内框”。代理实体可在CAD显示，但范围可能缺失、过大或包含外框/图签；不能承诺所有代理可读，也不能仅凭extents判定内框语义。能力不足先说明，使用可用的代表性视口参数或截图加已知几何辅助估计，并记录依据；截图像素不直接充作模型坐标。视觉定位不替代对象身份绑定，不自动转COM、任意Lisp或爆炸代理。当前底座不提供视图/截图时只用实际允许的查看路径，并如实区分执行方式。
 
-Record any approved base-color allowlist and original colors; color permission does not authorize geometry changes. Use existing Foundation mechanisms rather than another session/transaction layer. Historical provider experiments/COM routes in [validation](../docs/VALIDATION.md) are not installed dependencies or current schemas.
+## 每次任务的发现流程
+
+1. 从当前 Codex 会话、连接器或其支持的 MCP 发现入口读取**实际暴露的工具清单**；查看候选工具说明、必填/可选字段、枚举、结果形状和写入副作用。工具存在/可发现仅说明有入口，不表示后端兼容，更不表示真实图纸验收通过。不能猜工具参数或照搬历史 schema。不得用代码调用绕过工具明确拒绝、安全设置或会话的 unknown 身份栅栏。
+2. 只读查询当前目标：尽可能记录 CAD PID、完整文档路径和名称、后端/连接标识、当前布局及文件状态。若目标字段返回 PID、doc、backend 或 `unknown`，使用底座已有的状态/目标查询能力逐项核实；在无法唯一定位文档或身份仍 unknown 时不做写入。适配组件必须消费底座已确认的 PID/fullpath 并在操作前再次断言，不自行枚举或挑选另一 CAD 进程。
+3. 以**对象语义和读回证据**选能力，而非名称选能力。当前任务要求普通 `LEADER`（三点折线）与对应 `MTEXT` 对象关联，并需要读取其类型、三个顶点、关联、样式有效值和显示点。仅支持 `MLeader` 的创建入口不满足要求；不能把结果当普通 LEADER，也不能继续声称样式/引线规则通过。
+4. 在获准的副本上按需完成只读盘点、创建/修改、原生读回与保存。写入响应丢失或结果不明时先查询实体、句柄和文件状态，确认是否已落图，再决定是否恢复或重试；不要盲目重放创建。保存后可用时独立重开输出副本读回关键事实。结果报告区分“schema 可见”“隔离样例实测”“本图读回验收”。
+5. 对任何底图改色，先记录任务批准的 layer/handle 白名单和原始颜色，颜色审查与几何不变审查分开；不因改变颜色而放宽形状/位置保护。
+
+## 已授权的固定操作适配组件
+
+发现真实 schema 缺口不等于工具拒绝，也不自动禁止补足底座能力。**当本任务已明确授权对接组件时**，可在项目代码层实现固定、有限、经过审阅的原生操作组件，并通过当前实际暴露且允许的桥接工具调用。组件约束为：绑定并校验底座给出的 PID 与完整文档路径；限定到明确的 AutoCAD 对象类型和已盘点 handles/逻辑 ID；写入前检查旧状态、样式来源和目标状态，记录可识别的前后状态；操作后从 CAD 独立读回关键对象及属性。代码留在该项目的 source/scripts/native 等项目目录，不复制进 skill。工程规则只指定期望对象和验收条件，不调用或携带通用任意代码。
+
+该途径不能覆盖工具明确拒绝的操作、关闭/绕过安全设置、对身份为 unknown 的目标写入，也不能把代码桥接端点当成无边界命令通道。未获本任务授权时报告实际 schema 缺口；不得因此自动切到历史 COM 路线。
+
+## 能力证明快照（2026-10-03）
+
+以下本机 首轮 MCP 测试（本地历史记录，未公开） 与 实际工具目录（本地历史记录，未公开） 仅作历史追溯，不是 skill 执行依赖。它们用于说明已知边界，不能代替当前任务重新发现工具和 schema；没有在证据中通过的项目不得推定可用。
+
+| 实现/路径 | 隔离合成图上有证据的能力 | 与本技能相关的缺口 |
+| --- | --- | --- |
+| U-C4N，本机 COM 后端 | 创建闭合多段线、HATCH、MTEXT；测量/查询部分属性；移动文字；保存并独立重开核对 | 目录中的 `leader_create_mleader` 实际是 MLeader；没有结构化普通 LEADER 创建入口。不能宣称已满足普通 LEADER 样式要求。 |
+| bimwright，本机 .NET 插件 | 查询边界/HATCH/MTEXT；单文字移动；普通 LEADER 与其 MTEXT 成组移动且关联保留；一次保存/重开路径成功 | `create_leader` 实测实际构造 MLeader 并以 `eNullPtr` 失败；后续一次成组移动后的保存 `eFilerError`。不能作为普通 LEADER 创建或本次持续保存的证据。 |
+| beiming，fileIPC/native off 兼容路径 | 创建普通 LEADER + 关联 MTEXT；独立读取关联；相同 key 重放无重复；受管路径保存并独立重开 | 创建响应未返回 LEADER handle，需回读定位；未验证 `_KCYD_DIM` / `HyDim` 的完整精确样式、圆点颜色与本任务排布。native required 未通过，不把兼容路径冒充原生事务验收。 |
+
+该快照来自同一 AutoCAD 2026 隔离合成图，不证明 AutoCAD 2022、其他项目、当前会话或真实路施08图具备同样能力。它是底座适配前的历史能力基线。路施08本轮随后通过项目底座内的固定 C# 样式组件，并由 bimwright `dwg_send_code` 调用，补齐普通 LEADER 的字体、圆点、ActualWidth、Dimtad、AnnotationOffset；没有使用被拒绝的 run_lisp 操作，也没有改安全设置。R01 已有原生和图面验证，其余 32 组及整图最终验收未完成。组件是该项目的有限实现，不证明工具本身原生支持这些样式，也不能推定其他任务或当前会话同样可用。对后续真实 schema 缺口，先检查本任务授权；获准时按本节固定组件约束实现并核验，未获准时报告缺口。
+
+## 关联尾端稳定性
+
+普通 LEADER 的关联尾端由文字位置及原生关联偏移决定。创建、移动或修复三点引线后，须通过底座读取 `AnnotationOffset`、`Dimtad`、`Dimgap` 及关联文字位置；不能以刚写完的顶点正确代替稳定性验收。已有偏移不正确时，通过已核实的受控底座属性修改补正，不在技能里增加任意代码通道。
+
+本项目无额外文字间距的样式为 `Dimgap=0`、`Dimtad=0`，此时偏移应为 **C减去MTEXT插入点**，含底部间隙的Y差。左右开口分别按真实C计算，不能统一设为零或把左开口直接套右开口偏移。其他样式若Dimgap非零，按该原生样式的关联端点规则核算，不能直接套此简式。文字长度及水平段属于本技能的排布规则；底座仅提供属性读写、重算反馈和旧值核验。
+
+设置偏移后让CAD原生重算引线，回读A/B/C、文字位置、关联及偏移，核对B→C水平、长度与文字匹配。原生重算可能改变自动钩线标志，须显式核验预期值，不能默许其他样式属性改变。用图纸副本实际手动编辑一次文字并恢复，再读回尾段，必要时保存重开。若文字明显加长或更换对齐点，按新文字范围重排并同步偏移；固定偏移只保证尾段不因关联重算归零，不承诺任意增字后自动等宽。2026-10-15南一路RG02已实测“5.5→5.50→5.5”后尾段保留；该证据不代表其他历史标注已批量修复。
+
+若当前底座创建入口只接受顶点、不接受关联偏移，CAD建立关联时会立即将C重算到文字插入点。可先明确创建这一初始关联状态（C等于文字插入点），再读取实际文字宽度，用受控修改设置最终B/C及偏移。两步都须有确定回执，初建状态不作为标注完成；后续仍按最终水平线、间隙和关联验收。创建请求若因原生重算而确定回滚，只修正计划参数，不把回滚当作已创建，也不重放结果未知的请求。
+
+## 旧路径边界
+
+CAD2022 COM 脚本和历史命令序列见 [原生工作流遗留说明](native-workflow.md)。它们不是 MCP-first 默认值。只有任务明确选用相应 CAD2022 环境、用户权限覆盖需要的写入、并且该旧路径适用于实际图纸时才考虑；不要仅因为 MCP 缺少某个方法就自动启动 COM、LISP 或本地 SDK 替代。纯几何 `pair_layout.py` 与 CAD 访问解耦，可在所需真实数据齐备时继续使用。

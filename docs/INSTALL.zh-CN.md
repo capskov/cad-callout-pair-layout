@@ -1,3 +1,5 @@
+> Current v0.6 source preview / 当前v0.6源码预览：install this repository's main branch to use Agent planning and review_layout.py. Existing v0.3 release ZIPs contain the older pairwise mode. Keep the complete repository folder as the Skill, or preserve SKILL.md, SKILL.zh-CN.md, agents, references, scripts and examples together. No automatic CAD installation is added.
+
 # 安装与试用公开预览包
 
 [English](INSTALL.md) · [README](../README.zh-CN.md)
