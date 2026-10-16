@@ -2,7 +2,9 @@
 
 [中文](README.zh-CN.md) · [Install](docs/INSTALL.md) · [Compatibility](docs/COMPATIBILITY.md) · [Evidence](docs/VALIDATION.md)
 
-**Agent-led CAD callout planning, with small geometry tools for reliable repetitive checks.** Source preview v0.6 reads the inner frame first, plans regions/order/openings, then applies and reviews native results. The v0.3 pairwise solver remains available for local repair.
+**CAD Annotation Skill — Leader callouts, text styling, and intelligent layout.**
+
+Agent-led CAD callout planning, with small geometry tools for reliable repetitive checks. Source preview v0.6 reads the inner frame first, plans regions/order/openings, then applies and reviews native results. The v0.3 pairwise solver remains available for local repair.
 
 - Ordinary LEADER + associated editable MTEXT and yellow dot.
 - Agent judgment for road/gray background, usable regions and dense junctions.
